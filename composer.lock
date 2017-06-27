@@ -106,7 +106,7 @@
                 }
             ],
             "description": "The BoldGrid Library for shared code used in official BoldGrid plugins and themes.",
-            "time": "2017-06-27 01:01:38"
+            "time": "2017-06-27T01:01:38+00:00"
         }
     ],
     "packages-dev": [],
