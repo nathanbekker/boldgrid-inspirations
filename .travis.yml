@@ -44,4 +44,4 @@ before_script:
 
 # script: phpunit --debug
 script:
-  - vendor/bin/codecept run --steps
+  - vendor/bin/codecept run --debug
