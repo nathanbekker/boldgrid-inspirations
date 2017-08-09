@@ -9,7 +9,10 @@
 
 $I = new AcceptanceTester( $scenario );
 $I->wantTo( 'Visit WordPress Dashboard' );
-$I->loginAsAdmin();
-$I->see( 'Dashboard' );
+
+codecept_debug( $I->esecuteJS( 'return jQuery("body").html();') );
+
+//$I->loginAsAdmin();
+//$I->see( 'Dashboard' );
 
 // EOF
