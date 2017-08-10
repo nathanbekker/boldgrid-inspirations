@@ -32,7 +32,7 @@ before_script:
   - sleep 2s;
  
 script:
-  - phpunit --debug
+  - vendor/phpunit/phpunit/phpunit --debug
   - vendor/wp-cli/wp-cli/bin/wp config create --path=$WP_CORE_DIR --dbname=wordpress_test --dbuser=root --dbpass=''
   - vendor/wp-cli/wp-cli/bin/wp core install --path=$WP_CORE_DIR --url=http://127.0.0.1:4445 --title=Example --admin_user=admin --admin_password=password --admin_email=bradm@boldgrid.com 
   - vendor/bin/codecept run --debug
