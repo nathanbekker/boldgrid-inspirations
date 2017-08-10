@@ -44,7 +44,7 @@ before_script:
 
 # script: phpunit --debug
 script:
-  - vendor/wp-cli/wp-cli/bin/wp config create --dbname=wordpress_test --dbuser=root --dbpass=''
+  - vendor/wp-cli/wp-cli/bin/wp config create --path=/tmp/wordpress --dbname=wordpress_test --dbuser=root --dbpass=''
   - vendor/wp-cli/wp-cli/bin/wp core install --path=/tmp/wordpress --url=http://127.0.0.1:4445 --title=Example --admin_user=admin --admin_password=password --admin_email=bradm@boldgrid.com 
   - vendor/bin/codecept run --debug
 
