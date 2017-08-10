@@ -47,4 +47,5 @@ script:
   - vendor/bin/codecept run --debug
 
 after_script:
-  - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html | mail -s "CodeCeption FAIL" bradm@boldgrid.com
+  - pwd;
+  - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/*fail.html;
