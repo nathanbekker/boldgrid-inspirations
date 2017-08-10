@@ -8,10 +8,6 @@ notifications:
 dist: precise
 
 php:
-# Taking out php 5.3 support
-# https://bbpress.trac.wordpress.org/ticket/3127
-# https://blog.travis-ci.com/2017-07-11-trusty-as-default-linux-is-coming
-# - 5.3
   - 5.6
 
 env:
@@ -20,6 +16,9 @@ env:
 matrix:
   include:
     - php: 5.6
+      env: WP_VERSION=4.7.5
+    - php: 5.6
+      env: WP_VERSION=4.6.1
 
 before_script:
   - composer update
@@ -38,11 +37,6 @@ script:
   - vendor/bin/codecept run --debug
 
 after_script:
-  - pwd;
-  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations;
-  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests;
-  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception;
-  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output;
-  - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
-  - ls -alh /tmp/wordpress;
-  - cat /tmp/wordpress/wp-config.php;
+  # - pwd;
+  # - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output;
+  # - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
