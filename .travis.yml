@@ -48,4 +48,7 @@ script:
 
 after_script:
   - pwd;
-  - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/*fail.html;
+  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations;
+  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests;
+  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception;
+  - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output;
