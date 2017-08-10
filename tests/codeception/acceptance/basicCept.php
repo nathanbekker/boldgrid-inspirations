@@ -8,11 +8,11 @@
  */
 
 $I = new AcceptanceTester( $scenario );
-$I->wantTo( 'Visit WordPress Dashboard' );
 
-codecept_debug( $I->executeJS( 'return document.body.innerHTML;') );
-
-//$I->loginAsAdmin();
-//$I->see( 'Dashboard' );
-
-// EOF
+$I->wantTo( 'Login to the WordPress Dashboard' );
+$I->amOnPage( '/wp-login.php' );
+$I->fillField( '#user_login', 'admin' );
+$I->fillField( '#user_pass', 'password' );
+$I->click( 'Log In' );
+$I->see( 'Dashboard' );
+$I->see( 'Howdy,' );
