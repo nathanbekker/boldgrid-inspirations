@@ -1,41 +1,30 @@
 language: php
-
 notifications:
   email:
     on_success: never
     on_failure: change
-    
 dist: precise
-
 php:
-  - 5.6
-
+- 5.6
 env:
+  matrix:
   - WP_MULTISITE=0 WP_CEPT_SERVER='127.0.0.1:4445' WP_CORE_DIR=/tmp/wordpress/ WP_VERSION=latest
-
-# ##############################################################################
-# @todo: Currently, the matrix is not working with codeception / phantomjs
-# matrix:
-#   include:
-#     - php: 5.6
-#       env: WP_VERSION=4.7.5 WP_CORE_DIR=/tmp/wordpress-4.7.6
-#     - php: 5.6
-#       env: WP_VERSION=4.6.1 WP_CORE_DIR=/tmp/wordpress-4.6.1
-# ##############################################################################
-
+  global:
+    secure: l2RTMD9h3awY//M8dVTRJViRoXrBlZgHO9PoHkudHGUBtrSZdGk7zbP6RZyCo0qc7hvZ2fl9q4hNrXgQOS72Wf+LXr9+qFt9J5hQPZQeZP/iGyLsbgif37tIVVFwZPlUv14/kxCi0yHQtCkmZQKmzMDnw8XAzzupXm+9L0cIufUJK495o8cNR4dDLzb95LFxKmbLanaLHbXj5X4RCRLThiY41rzM4cujuId0Gb+/cONGwASvVGnxdoGwKo1c+hjAoyvu77TizKDM+s8vKSdXrKRPJE4MehZjd2aaugbIhwo/KYBxfbYYDzoCwCjUIivZyPw/A+EzohIm2JMv56H8T8jT8fv6YECDL+Y4+XDnU320Es5hrMqACLPetECediGkHrdLcb4yWKl4pBhkzyR37ZAVhJBF41qfna6Ikv1Ytys/4mOQJUomPICASucpEU4MGQg4ujn+CXaB/+iWc/PctBJqbjjuJNkwd1eyhlVwI2i7wHIbZFAQo8ghS59BzxwndpM0bKqpIZQl4h27S01GAsptKK1z18VMrv1lzpJ7XtpHszWnN8Up+Orc7iAmhJYDYPouulxTGFdUuQRhEhYfXLYLYQMO2yiLdh7drrB9h/nUFAdzjFokGVJtdIpkS0CM207g9r85d2cjamHf+lr+Rd4PN2CnicOi5rNUlHApeQg=
 before_script:
-  - composer update
-  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-  # Start up a web server / webdriver
-  - php -S "$WP_CEPT_SERVER" -t "$WP_CORE_DIR" >/dev/null 2>&1 &
-  - phantomjs --webdriver=4444 >/dev/null 2>&1 &
-  - sleep 2s;
- 
+- composer update
+- bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+- php -S "$WP_CEPT_SERVER" -t "$WP_CORE_DIR" >/dev/null 2>&1 &
+- phantomjs --webdriver=4444 >/dev/null 2>&1 &
+- sleep 2s;
 script:
-  - vendor/phpunit/phpunit/phpunit --debug
-  - vendor/wp-cli/wp-cli/bin/wp config create --path=$WP_CORE_DIR --dbname=wordpress_test --dbuser=root --dbpass=''
-  - vendor/wp-cli/wp-cli/bin/wp core install --path=$WP_CORE_DIR --url=http://127.0.0.1:4445 --title=Example --admin_user=admin --admin_password=password --admin_email=bradm@boldgrid.com 
-  - vendor/bin/codecept run --debug
-
-after_script:
-  cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
+- vendor/phpunit/phpunit/phpunit --debug
+- vendor/wp-cli/wp-cli/bin/wp config create --path=$WP_CORE_DIR --dbname=wordpress_test
+  --dbuser=root --dbpass=''
+- vendor/wp-cli/wp-cli/bin/wp core install --path=$WP_CORE_DIR --url=http://127.0.0.1:4445
+  --title=Example --admin_user=admin --admin_password=password --admin_email=bradm@boldgrid.com
+- cp -rfp /home/travis/build/BoldGrid/boldgrid-inspirations WP_CORE_DIR/wp-content/plugins
+- vendor/wp-cli/wp-cli/bin/wp --path=$WP_CORE_DIR plugin activate boldgrid-inspirations
+- vendor/wp-cli/wp-cli/bin/wp --path=$WP_CORE_DIR option add boldgrid_api_key $MD5KEY
+- vendor/bin/codecept run --debug
+after_script: cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
