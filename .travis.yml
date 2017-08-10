@@ -52,3 +52,4 @@ after_script:
   - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests;
   - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception;
   - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output;
+  - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
