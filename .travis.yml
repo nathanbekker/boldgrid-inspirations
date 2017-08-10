@@ -17,8 +17,8 @@ matrix:
   include:
     - php: 5.6
       env: WP_VERSION=4.7.5
-    - php: 5.6
-      env: WP_VERSION=4.6.1
+    #- php: 5.6
+    #  env: WP_VERSION=4.6.1
 
 before_script:
   - composer update
@@ -39,4 +39,4 @@ script:
 after_script:
   # - pwd;
   # - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output;
-  # - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
+  cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
