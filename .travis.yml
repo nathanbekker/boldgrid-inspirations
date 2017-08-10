@@ -11,7 +11,7 @@ php:
   - 5.6
 
 env:
-  - WP_MULTISITE=0 WP_CEPT_SERVER='127.0.0.1:4445' WP_CORE_DIR=/tmp/wordpress WP_VERSION=latest
+  - WP_MULTISITE=0 WP_CEPT_SERVER='127.0.0.1:4445' WP_CORE_DIR=/tmp/wordpress/ WP_VERSION=latest
 
 # ##############################################################################
 # @todo: Currently, the matrix is not working with codeception / phantomjs
