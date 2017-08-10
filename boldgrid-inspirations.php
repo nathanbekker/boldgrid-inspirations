@@ -45,7 +45,7 @@ if ( Boldgrid_Inspirations::is_php_compatible() ) {
 		)
 	);
 	// Include the autoloader to set plugin options and create instance.
-	$loader = require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+	$loader = require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
 	// Load Library.
 	$load = new Boldgrid\Library\Util\Load(

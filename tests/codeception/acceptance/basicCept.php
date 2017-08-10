@@ -16,3 +16,4 @@ $I->fillField( '#user_pass', 'password' );
 $I->click( 'Log In' );
 $I->see( 'Dashboard' );
 $I->see( 'Howdy,' );
+$I->see( 'Enter Your BoldGrid Connect Key' );

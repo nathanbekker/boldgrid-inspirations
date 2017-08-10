@@ -25,6 +25,6 @@ script:
   --title=Example --admin_user=admin --admin_password=password --admin_email=bradm@boldgrid.com
 - cp -rfp /home/travis/build/BoldGrid/boldgrid-inspirations $WP_CORE_DIR/wp-content/plugins
 - vendor/wp-cli/wp-cli/bin/wp --path=$WP_CORE_DIR plugin activate boldgrid-inspirations
-- vendor/wp-cli/wp-cli/bin/wp --path=$WP_CORE_DIR option add boldgrid_api_key $MD5KEY
 - vendor/bin/codecept run --debug
+- vendor/wp-cli/wp-cli/bin/wp --path=$WP_CORE_DIR option add boldgrid_api_key $MD5KEY
 after_script: cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
