@@ -31,11 +31,12 @@ install_wp() {
 	wget -nv -O $WP_CORE_DIR/wp-content/db.php https://raw.github.com/markoheijnen/wp-mysqli/master/db.php
 	
 	# Setup and configure our wp-config.php.
-	cp $WP_CORE_DIR/wp-config-sample.php $WP_CORE_DIR/wp-config.php
-	sed -i "s/database_name_here/$DB_NAME/" $WP_CORE_DIR/wp-config.php
-	sed -i "s/username_here/$DB_USER/" $WP_CORE_DIR/wp-config.php
-	sed -i "s/password_here/$DB_PASS/" $WP_CORE_DIR/wp-config.php
-	sed -i "s|localhost|${DB_HOST}|" $WP_CORE_DIR/wp-config.php
+	$WP_CORE_DIR/vendor/wp-cli/wp-cli/bin/wp core install --url=http://127.0.0.1:4445 --title=Example --admin_user=admin --admin_password=password --admin_email=bradm@boldgrid.com
+	# cp $WP_CORE_DIR/wp-config-sample.php $WP_CORE_DIR/wp-config.php
+	# sed -i "s/database_name_here/$DB_NAME/" $WP_CORE_DIR/wp-config.php
+	# sed -i "s/username_here/$DB_USER/" $WP_CORE_DIR/wp-config.php
+	# sed -i "s/password_here/$DB_PASS/" $WP_CORE_DIR/wp-config.php
+	# sed -i "s|localhost|${DB_HOST}|" $WP_CORE_DIR/wp-config.php
 }
 
 install_test_suite() {
