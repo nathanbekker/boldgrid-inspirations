@@ -2,7 +2,6 @@
     "require": {
         "boldgrid/boldgrid-inspirations-premium": "^1.0.0",
         "boldgrid/bgforms": "^1.0.0",
-        "codeception/codeception": "^2.2",
-        "lucatume/wp-browser": "^1.14"
+        "codeception/codeception": "^2.2"
     }
 }
