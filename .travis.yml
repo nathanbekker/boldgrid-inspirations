@@ -25,6 +25,7 @@ matrix:
 before_script:
   - composer update
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - rm /tmp/wordpress/wp-admin/setup-config.php
   # ###########################################################################
   # THE FOLLOWING IS FROM:
   # https://github.com/JDGrimes/wp-browser-travis-demo/blob/master/.travis.yml
@@ -54,3 +55,4 @@ after_script:
   - ls -alh /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output;
   - cat /home/travis/build/BoldGrid/boldgrid-inspirations/tests/codeception/_output/basicCept.fail.html;
   - ls -alh /tmp/wordpress;
+  - cat /tmp/wordpress/wp-config.php;
